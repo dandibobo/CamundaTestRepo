@@ -16,3 +16,12 @@ Uses external_task.bpmn in external_task_application directory in resources fold
 Shows how one external task can send data to another external task
 
 You may use json request in request.txt to start a process at the same get_started_application directory
+
+### ReceiveMessageApplication.java
+Uses catch_event.bpmn in receive_message_application directory in resources folder
+
+Shows how process stops at receive event and continues process after rest request 
+As an GUI use cockpit to observe the process
+
+You may use json request in request.txt to start a process at the same receive_message_application directory
+or you can start in tasklist creating a new process

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0dbkx95" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="catch_process" name="Catch process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0aq7xia</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0f47p2f">
+      <bpmn:incoming>Flow_0emlbsl</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0aq7xia" sourceRef="StartEvent_1" targetRef="catchId1" />
+    <bpmn:sequenceFlow id="Flow_0gdio89" sourceRef="catchId1" targetRef="catchProcessCatchId" />
+    <bpmn:sequenceFlow id="Flow_0emlbsl" sourceRef="catchId2" targetRef="Event_0f47p2f" />
+    <bpmn:serviceTask id="catchId1" name="Task 1" camunda:type="external" camunda:topic="catchExternal1">
+      <bpmn:incoming>Flow_0aq7xia</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gdio89</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="catchId2" name="Task 2" camunda:type="external" camunda:topic="catchExternal2">
+      <bpmn:incoming>Flow_03kodds</bpmn:incoming>
+      <bpmn:outgoing>Flow_0emlbsl</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_03kodds" sourceRef="catchProcessCatchId" targetRef="catchId2" />
+    <bpmn:intermediateCatchEvent id="catchProcessCatchId" name="Catch Process">
+      <bpmn:incoming>Flow_0gdio89</bpmn:incoming>
+      <bpmn:outgoing>Flow_03kodds</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_11elng2" messageRef="Message_0ku49kp" />
+    </bpmn:intermediateCatchEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_0ku49kp" name="catchProcessCatchGlobal" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="catch_process">
+      <bpmndi:BPMNEdge id="Flow_0aq7xia_di" bpmnElement="Flow_0aq7xia">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="293" y="117" />
+        <di:waypoint x="293" y="130" />
+        <di:waypoint x="370" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gdio89_di" bpmnElement="Flow_0gdio89">
+        <di:waypoint x="470" y="130" />
+        <di:waypoint x="562" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0emlbsl_di" bpmnElement="Flow_0emlbsl">
+        <di:waypoint x="850" y="117" />
+        <di:waypoint x="982" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03kodds_di" bpmnElement="Flow_03kodds">
+        <di:waypoint x="598" y="130" />
+        <di:waypoint x="674" y="130" />
+        <di:waypoint x="674" y="117" />
+        <di:waypoint x="750" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0f47p2f_di" bpmnElement="Event_0f47p2f">
+        <dc:Bounds x="982" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0i64rmy_di" bpmnElement="catchId1">
+        <dc:Bounds x="370" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_037cn1e_di" bpmnElement="catchId2">
+        <dc:Bounds x="750" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1g6ahhp_di" bpmnElement="catchProcessCatchId">
+        <dc:Bounds x="562" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="544" y="155" width="72" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,15 @@
+curl --location --request POST 'http://localhost:8080/engine-rest/process-definition/key/catch_process/start' \
+--header 'Content-Type: application/json' \
+--data-raw '{"variables":
+    {"amount": {"value":555,"type":"long"}, "item": {"value":"item-xyz"} },
+ "businessKey": "myCoolBusinessKey"
+
+}'
+
+
+curl --location --request POST 'http://localhost:8080/engine-rest/message' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "messageName" : "catchProcessCatchGlobal",
+  "businessKey": "myCoolBusinessKey"
+}'
